@@ -1,0 +1,30 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "email": "john@example.com",
+      "password": "123456"
+    },
+    {
+      "id": "937b",
+      "name": "Julia Monte Ribeiro",
+      "email": "julia.yuki.monte.ribeiro@gmail.com",
+      "password": "1234567"
+    },
+    {
+      "id": "acb6",
+      "name": "Luanna",
+      "email": "luanna@teste.com",
+      "password": "123"
+    }
+  ],
+  "locations": [
+    {
+      "id": "1",
+      "name": "Paris",
+      "description": "City of Lights",
+      "userId": 1
+    }
+  ]
+}
