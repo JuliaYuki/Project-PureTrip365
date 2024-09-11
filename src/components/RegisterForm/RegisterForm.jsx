@@ -23,7 +23,12 @@ export default function RegisterForm() {
       return;
     }
 
-    users.push({ email: data.email, password: data.password });
+    users.push({
+      name: data.name,
+      email: data.email,
+      password: data.password,
+      role: data.role,
+    });
     localStorage.setItem("users", JSON.stringify(users));
 
     alert("Usuário cadastrado com sucesso!");
@@ -34,6 +39,19 @@ export default function RegisterForm() {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)} className="form">
+        <div>
+          <label htmlFor="text">Nome:</label>
+          <input
+            type="text"
+            placeholder="Digite seu nome completo"
+            {...register("name", {
+              required: "Nome completo obrigatório",
+            })}
+            className="input"
+          />
+          {errors.name && <span className="error">{errors.name.message}</span>}
+        </div>
+
         <div>
           <label htmlFor="email">E-mail:</label>
           <input
@@ -70,6 +88,18 @@ export default function RegisterForm() {
           {errors.password && (
             <span className="error">{errors.password.message}</span>
           )}
+        </div>
+
+        <div>
+          <select
+            {...register("role", { required: "Selecione o tipo de usuário" })}
+            className="input"
+          >
+            <option value={""}>Selecione o tipo de usuário</option>
+            <option value={"Administrador"}>Administrador</option>
+            <option value={"Usuário"}>Usuário</option>
+          </select>
+          {errors.role && <span className="error">{errors.role.message}</span>}
         </div>
 
         <button type="submit" className="button">
