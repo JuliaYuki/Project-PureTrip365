@@ -23,12 +23,14 @@ export default function RegisterForm() {
       return;
     }
 
-    users.push({
+    const newUser = {
       name: data.name,
       email: data.email,
       password: data.password,
       role: data.role,
-    });
+    };
+
+    users.push(newUser);
     localStorage.setItem("users", JSON.stringify(users));
 
     alert("Usuário cadastrado com sucesso!");
