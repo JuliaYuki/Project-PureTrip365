@@ -99,8 +99,8 @@ export default function RegisterForm() {
             className="input"
           >
             <option value={""}>Selecione o tipo de usuário</option>
-            <option value={"Administrador"}>Administrador</option>
-            <option value={"Usuário"}>Usuário</option>
+            <option value={"Guia-Turistico"}>Guia Turístico</option>
+            <option value={"Turista"}>Turista</option>
           </select>
           {errors.role && <span className="error">{errors.role.message}</span>}
         </div>
