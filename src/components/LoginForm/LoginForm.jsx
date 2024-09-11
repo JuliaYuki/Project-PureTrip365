@@ -1,15 +1,8 @@
+import React from "react";
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
 import "./LoginForm.css";
 
 function LoginForm({ onLogin }) {
-  useEffect(() => {
-    localStorage.setItem(
-      "user",
-      JSON.stringify({ email: "user@example.com", password: "123456" })
-    );
-  }, []);
-
   const {
     register,
     handleSubmit,
@@ -18,20 +11,16 @@ function LoginForm({ onLogin }) {
   } = useForm();
 
   const onSubmit = (data) => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const users = JSON.parse(localStorage.getItem("users")) || [];
 
-    if (!storedUser || storedUser.email !== data.email) {
+    const user = users.find(
+      (user) => user.email === data.email && user.password === data.password
+    );
+
+    if (!user) {
       setError("email", {
         type: "manual",
-        message: "E-mail não encontrado",
-      });
-      return;
-    }
-
-    if (storedUser.password !== data.password) {
-      setError("password", {
-        type: "manual",
-        message: "Senha incorreta",
+        message: "E-mail ou senha incorretos.",
       });
       return;
     }
@@ -48,12 +37,16 @@ function LoginForm({ onLogin }) {
           placeholder="Digite seu e-mail"
           {...register("email", {
             required: "E-mail é obrigatório",
-            pattern: { value: /^\S+@\S+$/i, message: "E-mail inválido" },
+            pattern: {
+              value: /^\S+@\S+$/i,
+              message: "Formato de e-mail inválido",
+            },
           })}
           className="input"
         />
         {errors.email && <span className="error">{errors.email.message}</span>}
       </div>
+
       <div>
         <label>Senha:</label>
         <input
@@ -66,6 +59,7 @@ function LoginForm({ onLogin }) {
           <span className="error">{errors.password.message}</span>
         )}
       </div>
+
       <button type="submit" className="button">
         Entrar
       </button>
