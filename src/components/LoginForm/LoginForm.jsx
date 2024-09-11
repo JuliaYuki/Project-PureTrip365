@@ -6,6 +6,7 @@ function LoginForm({ onLogin }) {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
     setError,
   } = useForm();
@@ -26,6 +27,8 @@ function LoginForm({ onLogin }) {
     }
 
     onLogin(data.email, data.password);
+
+    reset();
   };
 
   return (
