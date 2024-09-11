@@ -5,6 +5,7 @@ export default function RegisterForm() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
     setError,
   } = useForm();
@@ -26,6 +27,8 @@ export default function RegisterForm() {
     localStorage.setItem("users", JSON.stringify(users));
 
     alert("Usuário cadastrado com sucesso!");
+
+    reset();
   };
 
   return (
