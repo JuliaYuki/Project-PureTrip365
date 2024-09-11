@@ -71,16 +71,17 @@ export default function RegisterForm() {
           )}
         </div>
 
-        <div>
+        <div className="erro">
           <label htmlFor="password">Senha:</label>
           <input
             type="password"
             placeholder="Digite sua senha"
             {...register("password", {
               required: "Senha obrigratória",
-              minLength: {
-                value: 8,
-                message: "A senha deve ter no mínimo 8 caracteres",
+              pattern: {
+                value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+                message:
+                  "A senha deve conter no mínimo 8 caracteres, incluindo letras e números.",
               },
             })}
             className="input"

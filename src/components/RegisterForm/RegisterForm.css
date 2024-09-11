@@ -41,12 +41,18 @@ select.input {
   background-color: #0056b3;
 }
 
-.error {
+.erro {
   display: block;
   text-align: center;
+}
+
+.error {
+  display: block;
+  margin: 0 auto;
   color: red;
   font-size: 12px;
   margin-top: 5px;
+  width: 200px;
 }
 
 label {
