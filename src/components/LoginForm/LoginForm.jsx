@@ -26,7 +26,15 @@ function LoginForm({ onLogin }) {
       return;
     }
 
-    onLogin(data.email, data.password);
+    localStorage.setItem(
+      "session",
+      JSON.stringify({
+        email: user.email,
+        role: user.role,
+      })
+    );
+
+    onLogin(user.email, user.role);
 
     reset();
   };
