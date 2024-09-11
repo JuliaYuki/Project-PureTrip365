@@ -23,7 +23,14 @@ export default function RegisterForm() {
       return;
     }
 
-    users.push({ email: data.email, password: data.password });
+    const newUser = {
+      name: data.name,
+      email: data.email,
+      password: data.password,
+      role: data.role,
+    };
+
+    users.push(newUser);
     localStorage.setItem("users", JSON.stringify(users));
 
     alert("Usuário cadastrado com sucesso!");
@@ -34,6 +41,19 @@ export default function RegisterForm() {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)} className="form">
+        <div>
+          <label htmlFor="text">Nome:</label>
+          <input
+            type="text"
+            placeholder="Digite seu nome completo"
+            {...register("name", {
+              required: "Nome completo obrigatório",
+            })}
+            className="input"
+          />
+          {errors.name && <span className="error">{errors.name.message}</span>}
+        </div>
+
         <div>
           <label htmlFor="email">E-mail:</label>
           <input
@@ -53,16 +73,17 @@ export default function RegisterForm() {
           )}
         </div>
 
-        <div>
+        <div className="erro">
           <label htmlFor="password">Senha:</label>
           <input
             type="password"
             placeholder="Digite sua senha"
             {...register("password", {
               required: "Senha obrigratória",
-              minLength: {
-                value: 8,
-                message: "A senha deve ter no mínimo 8 caracteres",
+              pattern: {
+                value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+                message:
+                  "A senha deve conter no mínimo 8 caracteres, incluindo letras e números.",
               },
             })}
             className="input"
@@ -70,6 +91,18 @@ export default function RegisterForm() {
           {errors.password && (
             <span className="error">{errors.password.message}</span>
           )}
+        </div>
+
+        <div>
+          <select
+            {...register("role", { required: "Selecione o tipo de usuário" })}
+            className="input"
+          >
+            <option value={""}>Selecione o tipo de usuário</option>
+            <option value={"Guia-Turistico"}>Guia Turístico</option>
+            <option value={"Turista"}>Turista</option>
+          </select>
+          {errors.role && <span className="error">{errors.role.message}</span>}
         </div>
 
         <button type="submit" className="button">
