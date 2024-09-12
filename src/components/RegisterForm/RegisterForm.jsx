@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import "./RegisterForm.css";
 
 export default function RegisterForm() {
@@ -9,6 +10,8 @@ export default function RegisterForm() {
     formState: { errors },
     setError,
   } = useForm();
+
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
@@ -34,6 +37,8 @@ export default function RegisterForm() {
     localStorage.setItem("users", JSON.stringify(users));
 
     alert("Usuário cadastrado com sucesso!");
+
+    navigate("/login");
 
     reset();
   };
@@ -99,7 +104,7 @@ export default function RegisterForm() {
             className="input"
           >
             <option value={""}>Selecione o tipo de usuário</option>
-            <option value={"Guia-Turistico"}>Guia Turístico</option>
+            <option value={"Guia Turístico"}>Guia Turístico</option>
             <option value={"Turista"}>Turista</option>
           </select>
           {errors.role && <span className="error">{errors.role.message}</span>}
