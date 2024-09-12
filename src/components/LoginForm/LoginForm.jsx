@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 
 function LoginForm({ onLogin }) {
@@ -10,6 +11,8 @@ function LoginForm({ onLogin }) {
     formState: { errors },
     setError,
   } = useForm();
+
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
@@ -33,6 +36,12 @@ function LoginForm({ onLogin }) {
         role: user.role,
       })
     );
+
+    if (user.role === "Guia Turístico") {
+      navigate("/dashboard-guide");
+    } else {
+      navigate("/dashboard");
+    }
 
     onLogin(user.email, user.role);
 
