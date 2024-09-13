@@ -46,11 +46,13 @@ function Navbar() {
             </li>
           )}
 
-        {session && location.pathname === "/dashboard" && (
-          <li>
-            <Logout />
-          </li>
-        )}
+        {session &&
+          (location.pathname === "/dashboard" ||
+            location.pathname === "/dashboard-guide") && (
+            <li>
+              <Logout />
+            </li>
+          )}
       </ul>
     </nav>
   );
