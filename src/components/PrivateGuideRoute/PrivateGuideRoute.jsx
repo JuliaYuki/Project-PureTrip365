@@ -1,11 +1,11 @@
-import { Navigate } from "react-router-dom";
+import { Navigate } from 'react-router-dom'
 
 export default function PrivateGuideRoute({ children }) {
-  const session = JSON.parse(localStorage.getItem("session"));
+  const session = JSON.parse(localStorage.getItem('session'))
 
-  if (!session || session.role !== "Guia Turístico") {
-    return <Navigate to="/login" />;
+  if (!session || session.role !== 'Guia Turístico') {
+    return <Navigate to="/login" />
   }
 
-  return children;
+  return children
 }
