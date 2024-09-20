@@ -8,14 +8,14 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  height: 100vh;
+  /* height: 100vh;
   display: grid;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   /* margin: 0 auto; */
 }
 
-ul {
+/* ul {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -41,4 +41,4 @@ nav {
   width: 100%;
   padding: 20px;
   z-index: 999;
-}
+} */
