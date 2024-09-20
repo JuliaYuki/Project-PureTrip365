@@ -1,19 +1,19 @@
-import LoginForm from "../../components/LoginForm/LoginForm";
-import "./LoginPage.css";
+import LoginForm from '../../components/LoginForm/LoginForm'
+import './LoginPage.css'
 
 export default function LoginPage() {
-  const handleLogin = (email, password) => {
-    console.log("email: ", email);
-    console.log("password: ", password);
-    alert("Login efetuado com sucesso!");
-  };
-
   return (
-    <>
-      <div className="container">
-        <h2>Login</h2>
-        <LoginForm onLogin={handleLogin} />
+    <div className="container">
+      <div className="login-left"> </div>
+      <div className="login-right">
+        <div className="right-content">
+          <h2 className="login-header">Efetue seu login</h2>
+          <p className="login-subtext">
+            Entre para Conquistar: Acesso ao Seu Novo Estilo de Vida Ativo!
+          </p>
+          <LoginForm />
+        </div>
       </div>
-    </>
-  );
+    </div>
+  )
 }
