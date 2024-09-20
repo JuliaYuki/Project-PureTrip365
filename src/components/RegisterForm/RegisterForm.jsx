@@ -1,6 +1,6 @@
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import "./RegisterForm.css";
+import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
+import './RegisterForm.css'
 
 export default function RegisterForm() {
   const {
@@ -9,21 +9,21 @@ export default function RegisterForm() {
     reset,
     formState: { errors },
     setError,
-  } = useForm();
+  } = useForm()
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const onSubmit = (data) => {
-    const users = JSON.parse(localStorage.getItem("users")) || [];
+  const onSubmit = data => {
+    const users = JSON.parse(localStorage.getItem('users')) || []
 
-    const existingUser = users.find((user) => user.email === data.email);
+    const existingUser = users.find(user => user.email === data.email)
 
     if (existingUser) {
-      setError("email", {
-        type: "manual",
-        message: "E-mail já cadastrado",
-      });
-      return;
+      setError('email', {
+        type: 'manual',
+        message: 'E-mail já cadastrado',
+      })
+      return
     }
 
     const newUser = {
@@ -31,44 +31,39 @@ export default function RegisterForm() {
       email: data.email,
       password: data.password,
       role: data.role,
-    };
+    }
 
-    users.push(newUser);
-    localStorage.setItem("users", JSON.stringify(users));
+    users.push(newUser)
+    localStorage.setItem('users', JSON.stringify(users))
 
-    alert("Usuário cadastrado com sucesso!");
+    alert('Usuário cadastrado com sucesso!')
 
-    navigate("/login");
-
-    reset();
-  };
+    navigate('/login')
+    reset()
+  }
 
   return (
-    <>
-      <form onSubmit={handleSubmit(onSubmit)} className="form">
-        <div>
-          <label htmlFor="text">Nome:</label>
+    <form onSubmit={handleSubmit(onSubmit)} className="register-form">
+      <div className="form-grid">
+        <div className="form-field">
+          <label htmlFor="name">Nome</label>
           <input
             type="text"
-            placeholder="Digite seu nome completo"
-            {...register("name", {
-              required: "Nome completo obrigatório",
-            })}
+            {...register('name', { required: 'Nome completo obrigatório' })}
             className="input"
           />
           {errors.name && <span className="error">{errors.name.message}</span>}
         </div>
 
-        <div>
-          <label htmlFor="email">E-mail:</label>
+        <div className="form-field">
+          <label htmlFor="email">Email</label>
           <input
             type="email"
-            placeholder="Digite seu e-mail"
-            {...register("email", {
-              required: "E-mail obrigratório",
+            {...register('email', {
+              required: 'E-mail obrigatório',
               pattern: {
                 value: /^\S+@\S+$/i,
-                message: "Formato de e-mail inválido",
+                message: 'Formato de e-mail inválido',
               },
             })}
             className="input"
@@ -78,17 +73,16 @@ export default function RegisterForm() {
           )}
         </div>
 
-        <div className="erro">
-          <label htmlFor="password">Senha:</label>
+        <div className="form-field">
+          <label htmlFor="password">Senha</label>
           <input
             type="password"
-            placeholder="Digite sua senha"
-            {...register("password", {
-              required: "Senha obrigratória",
+            {...register('password', {
+              required: 'Senha obrigatória',
               pattern: {
                 value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
                 message:
-                  "A senha deve conter no mínimo 8 caracteres, incluindo letras e números.",
+                  'A senha deve conter no mínimo 8 caracteres, incluindo letras e números.',
               },
             })}
             className="input"
@@ -98,22 +92,28 @@ export default function RegisterForm() {
           )}
         </div>
 
-        <div>
+        <div className="form-field">
+          <label htmlFor="role">Tipo de Usuário</label>
           <select
-            {...register("role", { required: "Selecione o tipo de usuário" })}
+            {...register('role', { required: 'Selecione o tipo de usuário' })}
             className="input"
           >
-            <option value={""}>Selecione o tipo de usuário</option>
-            <option value={"Guia Turístico"}>Guia Turístico</option>
-            <option value={"Turista"}>Turista</option>
+            <option value={''}>Selecione o tipo de usuário</option>
+            <option value={'Guia Turístico'}>Guia Turístico</option>
+            <option value={'Turista'}>Turista</option>
           </select>
           {errors.role && <span className="error">{errors.role.message}</span>}
         </div>
-
-        <button type="submit" className="button">
+      </div>
+      <div className="cadastro-btn">
+        <button type="submit" className="r-button">
           Cadastrar
         </button>
-      </form>
-    </>
-  );
+      </div>
+
+      <p className="login-link">
+        Já possui conta? <a href="/login">Faça seu login.</a>
+      </p>
+    </form>
+  )
 }
