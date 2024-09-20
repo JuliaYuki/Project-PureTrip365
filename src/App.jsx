@@ -9,10 +9,7 @@ import NewTour from './pages/NewTourPage/NewTour'
 import TourList from './pages/TourListPage/TourList'
 import TourDetail from './pages/TourDetailPage/TourDetail'
 import Reservations from './pages/ReservationsPage/Reservations'
-import PrivateRouteTourist from './components/PrivateRouteTourist/PrivateRouteTourist'
-import Navbar from './components/NavBar/NavBar'
 import TourReviews from './pages/TourReviewsPage/TourReviews'
-import TouristProfile from './pages/TouristProfilePage/TouristProfile'
 import EditTour from './pages/EditTourPage/EditTour'
 import ReviewsPage from './pages/TourReviewsPage/ReviewsPage'
 import Dashboard from './pages/Dashboard/Dashboard'
@@ -20,7 +17,6 @@ import Dashboard from './pages/Dashboard/Dashboard'
 function App() {
   return (
     <Router>
-      {/* <Navbar /> */}
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/login" element={<LoginPage />} />
@@ -79,14 +75,6 @@ function App() {
           element={
             <PrivateRoute>
               <TourReviews />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/perfil-turista"
-          element={
-            <PrivateRoute>
-              <TouristProfile />
             </PrivateRoute>
           }
         />
