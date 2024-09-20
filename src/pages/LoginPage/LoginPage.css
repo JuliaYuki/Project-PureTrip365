@@ -1,11 +1,44 @@
 .container {
   display: flex;
+  height: 100vh;
+}
+
+.login-left {
+  flex: 1;
+  background-image: url("../../assets/image.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.login-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  width: 100%;
+  max-width: 700px;
+}
+
+.login-header {
+  display: flex;
+  width: 100%;
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 27px;
+}
+
+.right-content {
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 0 5px 2px #ddd;
-  padding: 20px;
+  width: 370px;
+  text-align: center;
+}
+
+.login-subtext {
+  margin-bottom: 39px;
+  color: #000;
 }
