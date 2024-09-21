@@ -1,0 +1,68 @@
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field label {
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 7px;
+}
+
+.form-field input,
+.form-field select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.r-button {
+  padding: 15px;
+  background-color: #01bcc6;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  text-align: center;
+  width: 290px;
+  margin-top: 30px;
+}
+
+.r-button:hover {
+  background-color: #138496;
+}
+
+.cadastro-btn {
+  display: flex;
+  justify-content: center;
+}
+
+.login-link {
+  grid-column: span 2;
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.login-link a {
+  color: #17a2b8;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}

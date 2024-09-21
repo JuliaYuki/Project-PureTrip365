@@ -1,0 +1,52 @@
+/* Estilos da Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: #01bcc6;
+  height: 100vh;
+  padding: 30px 20px 0 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin-left: 14px;
+}
+
+.sidebar ul li {
+  margin: 20px 0;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.sidebar ul li svg {
+  margin-right: 10px;
+  font-size: 24px;
+}
+
+.sidebar .logout-btn {
+  margin-top: 400px;
+}
+
+.sidebar .logout {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.sidebar .logout svg {
+  margin-right: 10px;
+}
+
+.sidebar-logo {
+  width: 141px;
+  margin-bottom: 40px;
+  margin-left: 20px;
+}

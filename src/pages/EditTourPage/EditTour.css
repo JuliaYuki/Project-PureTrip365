@@ -1,0 +1,18 @@
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+.edit-form .link {
+  margin-right: 550px;
+}
+
+.form h2 {
+  color: #02363c;
+  margin-bottom: 20px;
+}

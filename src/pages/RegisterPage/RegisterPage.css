@@ -1,0 +1,36 @@
+.register-container {
+  display: flex;
+  height: 100vh;
+}
+
+.register-left {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+.register-left-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 670px;
+  max-width: 690px;
+  width: 100%;
+}
+
+.register-right {
+  flex: 1;
+  background-image: url("../../assets/Rectangle9.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.register-header {
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
